@@ -13,5 +13,5 @@ data to collect:
 what to produce:
 - use each color at least once before repeating
 - do not place 2 stripes of the same color next to each other
-- print output as "<color>: <number of rows> rows"
-- if user does not enter color names, print out as "Color<color number>: <number of rows> rows"
+- print output as "colorName: numberOfRows rows"
+- if user does not enter color names, print out as "Color colorNumber: numberOfRows rows"
