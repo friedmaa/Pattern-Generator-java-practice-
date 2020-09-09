@@ -31,26 +31,12 @@ public class PatternGenerator {
 		String input = console.next();
 		if (input.equals("n")) {
 			//GENERIC Colors
-			int numColors = 0;
-			Scanner colorNumIn = new Scanner(System.in);
-			System.out.println("Enter the number of colors you would like to use and they will be labeled as 'Color X'.");
-			if(!colorNumIn.hasNextInt()){
-				System.out.println("Please enter an integer number");
-				if(colorNumIn.nextInt() <= 0){
-					System.out.println("Please enter a positive integer number");				
-				}
-			}else
-				numColors = colorNumIn.nextInt();
-			//createGenericColorsList(numberOfColors);
-			for (int i = 0; i < numColors; i++) {
-				listToReturn.add("Color " +(i+1));//need the i+1 because i starts at 0
-				System.out.println(listToReturn.get(i));
-			}
+			return createGenericColorsList();
 		}if(input.equals("y")){
 			//SPECIFIC Colors
 			System.out.println("Please type the name of your color and hit enter, when you are finished, type \"done\"");
 			//System.out.println("go to createSpecificColorsList");
-		} else if(!(input.equals("n"))||!(input.equals("y"))) { 
+		} if(!(input.equals("n"))||!(input.equals("y"))) { 
 			System.out.println("Please enter y or n");
 			selectColors();
 		}
@@ -64,22 +50,24 @@ public class PatternGenerator {
 	}
 
 	public static List<String> createGenericColorsList(){
+		List<String> listToReturn = new ArrayList<String>();
 		int numColors = 0;
-		Scanner colorNumIn = new Scanner(System.in);
 		System.out.println("Enter the number of colors you would like to use and they will be labeled as 'Color X'.");
+		Scanner colorNumIn = new Scanner(System.in);
 		if(!colorNumIn.hasNextInt()){
 			System.out.println("Please enter an integer number");
-			if(colorNumIn.nextInt() <= 0){
-				System.out.println("Please enter a positive integer number");				
-			}
-		}else
-			numColors = colorNumIn.nextInt();
-		//createGenericColorsList(numberOfColors);
-		List<String> listToReturn = new ArrayList<String>();
-		for (int i = 0; i < numColors; i++) {
-			listToReturn.add("Color " +(i+1));//need the i+1 because i starts at 0
-			System.out.println(listToReturn.get(i));
+			return createGenericColorsList();
 		}
+		numColors = colorNumIn.nextInt();
+		if(numColors <= 0){
+			System.out.println("Please enter a positive integer number");
+			return createGenericColorsList();	
+		}
+		else	
+			for (int i = 0; i < numColors; i++) {
+				listToReturn.add("Color " +(i+1));//need the i+1 because i starts at 0
+				System.out.println(listToReturn.get(i));
+			}
 		return listToReturn;
 	}
 
