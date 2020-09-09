@@ -7,9 +7,31 @@ public class PatternGenerator {
 		// TODO Auto-generated method stub
 		//System.out.println("test");
 		Scanner console = new Scanner(System.in);
+		System.out.println("Would you like to enter specific colors? (y/n)");
+		if(console.next().equals("y")) {
+			System.out.println("go to createSpecificColorsList");
+		} if (console.next().equals("n")) {
+			System.out.println("Enter the number of colors you would like to use and they will be labeled as 'Color X'.");
+			createGenericColorsList(5);
+		}
 		//createRowNumbers(10,25,5);
-		//howManyStripes();
+		//int stripeNumber = howManyStripes();
+		//createGenericColorsList(7);
 
+	}
+	
+	public static List<String> createSpecificColorsList(int numColors){
+		List<String> listToReturn = new ArrayList<String>();
+		return listToReturn;
+	}
+	
+	public static List<String> createGenericColorsList(int numColors){
+		List<String> listToReturn = new ArrayList<String>();
+		for (int i = 0; i < numColors; i++) {
+			listToReturn.add("Color " +(i+1));//need the i+1 because i starts at 0
+			//System.out.println(listToReturn.get(i));
+		}
+		return listToReturn;
 	}
 	
 	public static int howManyStripes(){
@@ -18,6 +40,7 @@ public class PatternGenerator {
 		int numberOfStripes = 0;
 		if(!stripeNumChoice.hasNextInt()){
 			System.out.println("Please enter an integer number");
+			if(stripeNumChoice.nextInt() <= 0){
 				System.out.println("Please enter a positive integer number");
 				return howManyStripes();
 			}
