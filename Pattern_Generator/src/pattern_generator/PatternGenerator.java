@@ -9,16 +9,10 @@ public class PatternGenerator {
 		int numberOfColors = 0;
 		List<String> listOfColors = new ArrayList<String>();
 		listOfColors = selectColors();
-//		Scanner console = new Scanner(System.in);
-//		System.out.println("Would you like to enter specific colors? (y/n)");
-//		String input = console.next();
-//		if (input.equals("n")) {
-//			createGenericColorsList();
-//		}else if(input.equals("y")){
-//			System.out.println("go to createSpecificColorsList");
-//		} else if(!(input.equals("n"))||!(input.equals("y"))) {
-//			System.out.println("Please enter y or n");
-//		}
+		for(int i = 0; i < listOfColors.size(); i++) {
+			System.out.println(listOfColors.get(i));
+		}
+
 	}
 	//createRowNumbers(10,25,5);
 	//int stripeNumber = howManyStripes();
@@ -29,6 +23,10 @@ public class PatternGenerator {
 		Scanner console = new Scanner(System.in);
 		System.out.println("Would you like to enter specific colors? (y/n)");
 		String input = console.next();
+		if(!((input.equals("n"))||(input.equals("y")))) { 
+			System.out.println("Please enter y or n");
+			selectColors();
+		}
 		if (input.equals("n")) {
 			//GENERIC Colors
 			return createGenericColorsList();
@@ -36,16 +34,24 @@ public class PatternGenerator {
 			//SPECIFIC Colors
 			System.out.println("Please type the name of your color and hit enter, when you are finished, type \"done\"");
 			//System.out.println("go to createSpecificColorsList");
-		} if(!(input.equals("n"))||!(input.equals("y"))) { 
-			System.out.println("Please enter y or n");
-			selectColors();
+			return createSpecificColorsList();
 		}
 		return listToReturn;
 	}
 
-	public static List<String> createSpecificColorsList(int numColors){
+	public static List<String> createSpecificColorsList(){
 		List<String> listToReturn = new ArrayList<String>();
-
+		Scanner colorNamesIn = new Scanner(System.in);
+		String enteredColor = "";
+		while(colorNamesIn.hasNext()) {
+			enteredColor = colorNamesIn.next();
+			if(enteredColor.equals("done")) {
+				return listToReturn;
+			}
+			listToReturn.add(enteredColor);
+			System.out.println(enteredColor);
+		}
+		//System.out.println(enteredColor);
 		return listToReturn;
 	}
 
